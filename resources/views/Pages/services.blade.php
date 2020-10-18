@@ -10,10 +10,10 @@
 </div>
 <div class="container">
     <div class="row">
-        <ul class="list-group">
+        <ul class="list-group" style="width:100%">
             @foreach ($services as $service)
 
-                <li class="list-group-item">{{$service}}</li>
+                <li class="list-group-item" style="padding:3%; text-align:center;"><b>{{$service}}</b></li>
     
             @endforeach
             

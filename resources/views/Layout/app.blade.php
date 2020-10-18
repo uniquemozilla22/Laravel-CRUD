@@ -8,6 +8,7 @@
    
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="https://kit.fontawesome.com/b58bb6ea64.js" crossorigin="anonymous"></script>
 </head>
 <body>
     @extends('Layout.navbar')
