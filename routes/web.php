@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/about', function () {
+    return view('Pages.about');
+});
+Route::get('/services', function () {
+
+    $services=['Web development','App Development','SEO Optimization'];
+
+
+    return view('pages.services')->with('services',$services);
+});
+Route::get('/posts', function () {
+    return view('pages.posts');
+});
