@@ -1,6 +1,11 @@
 @extends('Layout.app')
 
 @section('content')
+<div class="container">
+    <div class="row">
+            <a href="#" class="btn btn-success" style="width: 100%; text-align:center; margin:10px;">Create a Post</a>
+    </div>
+</div>
 <ul class="list-group">
     <li class="list-group-item">
         <div class="row">
