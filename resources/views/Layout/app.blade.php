@@ -12,7 +12,7 @@
 </head>
 <body>
     @extends('Layout.navbar')
-    
+   
     
     <div class="container" style="margin-top:100px;">
     

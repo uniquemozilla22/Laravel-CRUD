@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class PostController extends Controller
 {
@@ -13,7 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $post = Post::all();
+        return view('Posts.index')->with('posts',$post);
     }
 
     /**
@@ -23,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('Posts.create');
     }
 
     /**
@@ -34,7 +39,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required',
+            'body'=>'required'
+
+        ]);
+
+        $post= new Post;
+
+        $post->title = $request->input('title');
+        $post->desc = $request->input('body');
+        $post->save();
+            return redirect('Posts.index')->with('success',"Post has been created.");
+
+
+
     }
 
     /**
@@ -45,7 +64,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('Posts.show')->with('post',$post);
+
     }
 
     /**
@@ -56,7 +78,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post= Post::find($id);
+
+        return view('Posts.edit')->with('post',$post);
     }
 
     /**
@@ -68,17 +92,42 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $post= Post::find($id);
+
+        $post->title = $request->input('title');
+        $post->desc = $request->input('body');
+        $post->save();
+            return redirect('./posts')->with('success',"Post has been modified sucessfully.");
+
+
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Confirms the response
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $posts=Post::find($id);
+        return view('Posts.destroy')->with('post',$posts);
     }
+
+    /**
+     *Deletes the resource in storage
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $posts=Post::find($id);
+        $posts->delete();
+        return redirect('./posts')->with('success','The post has been sucessfully deleted');
+    }
+    
+
+    
 }

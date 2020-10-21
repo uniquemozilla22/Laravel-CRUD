@@ -1,5 +1,6 @@
 <?php
 
+use App\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,11 @@ Route::get('/services', function () {
 
     return view('pages.services')->with('services',$services);
 });
-Route::get('/posts', function () {
-    return view('pages.posts');
+
+Route::resource('posts','PostController');
+
+Route::get('/posts/delete/{{$id}}', function ($id) {
+    $post=Post::find($id);
+    return view('Pages.destroy')->with('post',$post);
 });
+
