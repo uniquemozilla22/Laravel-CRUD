@@ -17,8 +17,10 @@
                 <p class="frames-description">{{$post->desc}}<p>
             </div>
             <div class="col-4" style="text-align: center" >
-            <a href="./posts/{{$post->id}}" class="btn btn-success" style="padding :5%;margin:2%">Show Post</a>
-            <a href="./posts/delete/{{$post->id}}" class="btn btn-danger" style="padding :5%;margin:2%">Delete</a>
+                <a href="./posts/{{$post->id}}" class="btn btn-success" style="padding :5%;margin:2%">Show Post</a>
+                <a href="./posts/{{$post->id}}/edit" class="btn btn-info" style="padding :5%;margin:2%">Edit Post</a>
+
+            
             </div>
         </div>
     </li>

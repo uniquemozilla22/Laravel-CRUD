@@ -30,8 +30,4 @@ Route::get('/services', function () {
 
 Route::resource('posts','PostController');
 
-Route::get('/posts/delete/{{$id}}', function ($id) {
-    $post=Post::find($id);
-    return view('Pages.destroy')->with('post',$post);
-});
 

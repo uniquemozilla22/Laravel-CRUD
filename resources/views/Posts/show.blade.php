@@ -8,7 +8,7 @@
                 <a href="../posts" class="btn btn-danger">Go Back</a>
                 <div class=" float-right">
                 <a href="../posts/{{$post->id}}/edit" class="btn btn-success">Edit Post</a>
-                    <a href="../posts" class="btn btn-danger">Delete Post</a>
+                    
                 </div>
             </div>
         </div>
@@ -25,7 +25,13 @@
         </div>
         <div class="row">
             <div class="container">
-               
+                {!!Form::open(['action'=>['PostController@destroy',$post->id],'method'=>'POST','class'=>'p-2 col-12']) !!}
+        
+                {{Form::hidden ('_method','DELETE')}}
+    
+                {{Form::submit('Delete',['class'=>'btn btn-danger','style'=>'width:100%'])}}
+    
+                {!!Form::close()!!}
             </div>
         </div>
     </div>
